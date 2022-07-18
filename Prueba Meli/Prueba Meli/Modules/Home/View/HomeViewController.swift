@@ -13,34 +13,40 @@ class HomeViewController: UIViewController {
     
     var viewModel: HomeViewModelProtocol?
     
-    lazy var searchBar = UISearchBar()
+    lazy var searchBarController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpIU()
-        viewModel?.getClothesAndAccessories()
-        
+        setUp()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        searchBarController.isActive = false
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    private func setUp() {
+        title = ""
         
         navigationController?.themeNavigationBar()
-    }
-    
-    private func setUpIU() {
         setUpSearchBar()
         setupTable()
+        viewModel?.getClothesAndAccessories()
     }
     
     private func setUpSearchBar() {
-        searchBar.searchTextField.placeholder = "Buscar en Mercado Libre"
-        searchBar.searchTextField.backgroundColor = .white
-    
-        navigationItem.titleView = searchBar
-        //searchBar.showsCancelButton = true
-        
+        searchBarController.searchBar.searchTextField.placeholder = "Buscar en Mercado Libre"
+        searchBarController.searchBar.searchTextField.backgroundColor = .white
+        searchBarController.searchBar.delegate = self
+        searchBarController.hidesNavigationBarDuringPresentation = false
+        definesPresentationContext = true
+        navigationItem.titleView = searchBarController.searchBar
     }
     
     private func setupTable() {
@@ -65,6 +71,7 @@ class HomeViewController: UIViewController {
     
 }
 
+// MARK: View Protocol
 extension HomeViewController: HomeViewProtocol {
     func update() {
         DispatchQueue.main.async { [weak self] in
@@ -92,6 +99,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configureCell(product: viewModel?.getProduct(index: indexPath.row))
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.productDetail(index: indexPath.row)
+    }
 }
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let text = searchBar.searchTextField.text
+        searchBar.searchTextField.text = ""
+        print(text)
+    }
+}
+
 
 

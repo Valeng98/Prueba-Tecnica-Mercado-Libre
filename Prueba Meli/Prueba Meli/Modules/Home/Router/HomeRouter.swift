@@ -25,4 +25,8 @@ class HomeRouter: HomeRouterProtocol {
         
         return view
     }
+    
+    func goToProductDetail(product: Product?) {
+        view?.navigationController?.pushViewController(ProductDetailRouter.createModule(product: product), animated: true)
+    }
 }

@@ -13,6 +13,8 @@ protocol HomeRouterProtocol: AnyObject {
     var view: UIViewController? { get set }
     
     static func createModule() -> HomeViewController
+    
+    func goToProductDetail(product: Product?)
 }
 
 // MARK: - View Protocol
@@ -31,6 +33,7 @@ protocol HomeViewModelProtocol: AnyObject {
     func getClothesAndAccessories()
     func listProductsCount() -> Int?
     func getProduct(index: Int) -> Product?
+    func productDetail(index: Int)
 }
 
 

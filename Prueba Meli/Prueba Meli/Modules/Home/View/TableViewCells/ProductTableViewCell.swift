@@ -32,7 +32,7 @@ class ProductTableViewCell: UITableViewCell {
         guard let product = product else { return }
         
         titleLabel.text = product.title
-        priceLabel.text = String(product.price)
+        priceLabel.text = product.price.moneyFormat()
         productImage.downloadUrl(url: product.thumbnail)
         
     }

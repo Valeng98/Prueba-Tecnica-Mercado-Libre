@@ -32,4 +32,9 @@ class HomeViewModel: HomeViewModelProtocol {
     func getProduct(index: Int) -> Product? {
         return products?[index]
     }
+    
+    func productDetail(index: Int) {
+        let product = products?[index]
+        router?.goToProductDetail(product: product)
+    }
 }

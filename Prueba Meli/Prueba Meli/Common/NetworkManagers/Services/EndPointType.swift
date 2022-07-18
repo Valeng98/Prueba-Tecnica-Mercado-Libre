@@ -18,12 +18,12 @@ enum EndPointType {
     
         switch self {
         case .clothesAndAccessories:
-            components.path = "/sites/MLA/search"
+            components.path = "/sites/MCO/search"
             components.queryItems = [
-            URLQueryItem(name: "category", value: "MLA1430")
+            URLQueryItem(name: "category", value: "MCO1430")
             ]
         case .search(let query):
-            components.path = "/sites/MLA/search"
+            components.path = "/sites/MCO/search"
             components.queryItems = [
                 URLQueryItem(name: "q", value: query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed))
             ]

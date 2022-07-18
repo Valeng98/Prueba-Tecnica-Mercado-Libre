@@ -34,8 +34,6 @@ class Services {
             }
             
             do {
-//                let data1 = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-//                print(data1?["results"])
                 let result = try JSONDecoder().decode(expecting, from: data)
                 completion(.success(result))
             } catch {
