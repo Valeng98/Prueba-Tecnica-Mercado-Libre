@@ -21,6 +21,16 @@
 		EB01B0532880BD810003BE6D /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB01B0512880BD810003BE6D /* ProductTableViewCell.swift */; };
 		EB01B0542880BD810003BE6D /* ProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB01B0522880BD810003BE6D /* ProductTableViewCell.xib */; };
 		EB07C9732884CDFD0039F7DD /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C9722884CDFD0039F7DD /* Double+Extension.swift */; };
+		EB07C97A2885C7EC0039F7DD /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C9792885C7EC0039F7DD /* SearchRouter.swift */; };
+		EB07C97C2885C8010039F7DD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C97B2885C8010039F7DD /* SearchViewModel.swift */; };
+		EB07C97E2885C81C0039F7DD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C97D2885C81C0039F7DD /* SearchViewController.swift */; };
+		EB07C9802885C8430039F7DD /* SearchProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C97F2885C8430039F7DD /* SearchProtocols.swift */; };
+		EB07C9872885F6BD0039F7DD /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB07C9862885F6BD0039F7DD /* SearchViewController.storyboard */; };
+		EB07C9892885F6EE0039F7DD /* RecordProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C9882885F6EE0039F7DD /* RecordProtocols.swift */; };
+		EB07C98B2885F7150039F7DD /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C98A2885F7150039F7DD /* RecordViewController.swift */; };
+		EB07C98D2885F75D0039F7DD /* RecordViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB07C98C2885F75D0039F7DD /* RecordViewController.storyboard */; };
+		EB07C98F2885F76C0039F7DD /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C98E2885F76C0039F7DD /* RecordViewModel.swift */; };
+		EB07C9912885F7C00039F7DD /* RecordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB07C9902885F7C00039F7DD /* RecordRouter.swift */; };
 		EB2C0DDA28821F4500FE7126 /* MeliNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2C0DD928821F4500FE7126 /* MeliNetworkManager.swift */; };
 		EB2C0DDC28821F7D00FE7126 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2C0DDB28821F7D00FE7126 /* Services.swift */; };
 		EB2C0DDE28821F9400FE7126 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2C0DDD28821F9400FE7126 /* EndPointType.swift */; };
@@ -54,6 +64,16 @@
 		EB01B0512880BD810003BE6D /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		EB01B0522880BD810003BE6D /* ProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductTableViewCell.xib; sourceTree = "<group>"; };
 		EB07C9722884CDFD0039F7DD /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
+		EB07C9792885C7EC0039F7DD /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		EB07C97B2885C8010039F7DD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		EB07C97D2885C81C0039F7DD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		EB07C97F2885C8430039F7DD /* SearchProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProtocols.swift; sourceTree = "<group>"; };
+		EB07C9862885F6BD0039F7DD /* SearchViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchViewController.storyboard; sourceTree = "<group>"; };
+		EB07C9882885F6EE0039F7DD /* RecordProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordProtocols.swift; sourceTree = "<group>"; };
+		EB07C98A2885F7150039F7DD /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		EB07C98C2885F75D0039F7DD /* RecordViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordViewController.storyboard; sourceTree = "<group>"; };
+		EB07C98E2885F76C0039F7DD /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		EB07C9902885F7C00039F7DD /* RecordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordRouter.swift; sourceTree = "<group>"; };
 		EB2C0DD928821F4500FE7126 /* MeliNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeliNetworkManager.swift; sourceTree = "<group>"; };
 		EB2C0DDB28821F7D00FE7126 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		EB2C0DDD28821F9400FE7126 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
@@ -134,8 +154,10 @@
 		EB01B03A28806F560003BE6D /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				EB2C0DF82883AC5A00FE7126 /* ProductDetail */,
 				EB01B03B28806F6A0003BE6D /* Home */,
+				EB07C9742885C7770039F7DD /* Search */,
+				EB07C9812885F6230039F7DD /* Record */,
+				EB2C0DF82883AC5A00FE7126 /* ProductDetail */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -213,6 +235,94 @@
 				EB01B0522880BD810003BE6D /* ProductTableViewCell.xib */,
 			);
 			path = TableViewCells;
+			sourceTree = "<group>";
+		};
+		EB07C9742885C7770039F7DD /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C9782885C7A10039F7DD /* Protocols */,
+				EB07C9772885C7990039F7DD /* View */,
+				EB07C9762885C78B0039F7DD /* ViewModel */,
+				EB07C9752885C7840039F7DD /* Router */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		EB07C9752885C7840039F7DD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C9792885C7EC0039F7DD /* SearchRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		EB07C9762885C78B0039F7DD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C97B2885C8010039F7DD /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EB07C9772885C7990039F7DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C97D2885C81C0039F7DD /* SearchViewController.swift */,
+				EB07C9862885F6BD0039F7DD /* SearchViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB07C9782885C7A10039F7DD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C97F2885C8430039F7DD /* SearchProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		EB07C9812885F6230039F7DD /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C9852885F6710039F7DD /* Protocols */,
+				EB07C9842885F6610039F7DD /* View */,
+				EB07C9832885F64C0039F7DD /* ViewModel */,
+				EB07C9822885F6400039F7DD /* Router */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		EB07C9822885F6400039F7DD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C9902885F7C00039F7DD /* RecordRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		EB07C9832885F64C0039F7DD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C98E2885F76C0039F7DD /* RecordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EB07C9842885F6610039F7DD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C98A2885F7150039F7DD /* RecordViewController.swift */,
+				EB07C98C2885F75D0039F7DD /* RecordViewController.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB07C9852885F6710039F7DD /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				EB07C9882885F6EE0039F7DD /* RecordProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		EB2C0DD528821E4100FE7126 /* NetworkManagers */ = {
@@ -365,8 +475,10 @@
 				EB01B042288070D80003BE6D /* HomeViewController.storyboard in Resources */,
 				EB01B0542880BD810003BE6D /* ProductTableViewCell.xib in Resources */,
 				EB01B033287F0A500003BE6D /* LaunchScreen.storyboard in Resources */,
+				EB07C98D2885F75D0039F7DD /* RecordViewController.storyboard in Resources */,
 				EB01B030287F0A500003BE6D /* Assets.xcassets in Resources */,
 				EB2C0E022883ACF800FE7126 /* ProductDetailViewController.storyboard in Resources */,
+				EB07C9872885F6BD0039F7DD /* SearchViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,7 +516,10 @@
 			files = (
 				EB2C0DE728832F7700FE7126 /* UIImageView+Extension.swift in Sources */,
 				EB01B0462880713A0003BE6D /* HomeRouter.swift in Sources */,
+				EB07C97A2885C7EC0039F7DD /* SearchRouter.swift in Sources */,
+				EB07C98B2885F7150039F7DD /* RecordViewController.swift in Sources */,
 				EB07C9732884CDFD0039F7DD /* Double+Extension.swift in Sources */,
+				EB07C9912885F7C00039F7DD /* RecordRouter.swift in Sources */,
 				EB01B0532880BD810003BE6D /* ProductTableViewCell.swift in Sources */,
 				EB2C0DDA28821F4500FE7126 /* MeliNetworkManager.swift in Sources */,
 				EB01B027287F0A4E0003BE6D /* AppDelegate.swift in Sources */,
@@ -415,11 +530,16 @@
 				EB01B044288071220003BE6D /* HomeViewModel.swift in Sources */,
 				EB2C0DFE2883ACAE00FE7126 /* ProductDetailProtocols.swift in Sources */,
 				EB2C0E042883AD1100FE7126 /* ProductDetailViewModel.swift in Sources */,
+				EB07C98F2885F76C0039F7DD /* RecordViewModel.swift in Sources */,
+				EB07C97C2885C8010039F7DD /* SearchViewModel.swift in Sources */,
 				EB2C0E002883ACCB00FE7126 /* ProductDetailViewController.swift in Sources */,
 				EB2C0DE32882333300FE7126 /* ResponseMeli.swift in Sources */,
 				EB2C0DE9288390F600FE7126 /* UINavigationController+Extension.swift in Sources */,
+				EB07C9892885F6EE0039F7DD /* RecordProtocols.swift in Sources */,
+				EB07C97E2885C81C0039F7DD /* SearchViewController.swift in Sources */,
 				EB01B049288075AB0003BE6D /* HomeProtocols.swift in Sources */,
 				EB2C0DE028821FC000FE7126 /* ErrorType.swift in Sources */,
+				EB07C9802885C8430039F7DD /* SearchProtocols.swift in Sources */,
 				EB2C0E062883AD2400FE7126 /* ProductDetailRouter.swift in Sources */,
 				EB01B040288070BD0003BE6D /* HomeViewController.swift in Sources */,
 				EB2C0DE52882346F00FE7126 /* Product.swift in Sources */,

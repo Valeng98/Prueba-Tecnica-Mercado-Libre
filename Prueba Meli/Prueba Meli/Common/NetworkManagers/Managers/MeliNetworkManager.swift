@@ -18,6 +18,6 @@ class MeliNetworkManager {
     }
     
     func getSearch(query: String, completion: @escaping (Result<ResponseMeli, Error>) -> Void) {
-        Services.shared.request(endPoint: .clothesAndAccessories, expecting: ResponseMeli.self, completion: completion)
+        Services.shared.request(endPoint: .search(query: query), expecting: ResponseMeli.self, completion: completion)
     }
 }

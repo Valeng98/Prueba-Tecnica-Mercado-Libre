@@ -29,4 +29,10 @@ class HomeRouter: HomeRouterProtocol {
     func goToProductDetail(product: Product?) {
         view?.navigationController?.pushViewController(ProductDetailRouter.createModule(product: product), animated: true)
     }
+    
+    func goToSearch(text: String) {
+        view?.navigationController?.pushViewController(SearchRouter.createModule(text: text), animated: true)
+        
+        
+    }
 }

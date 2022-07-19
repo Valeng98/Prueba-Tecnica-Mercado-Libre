@@ -1,17 +1,17 @@
 //
-//  HomeViewController.swift
+//  SearchViewController.swift
 //  Prueba Meli
 //
-//  Created by Valentina Guarnizo on 14/07/22.
+//  Created by Valentina Guarnizo on 18/07/22.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class SearchViewController: UIViewController {
     
-    @IBOutlet weak var productTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
-    var viewModel: HomeViewModelProtocol?
+    var viewModel: SearchViewModelProtocol?
     
     lazy var searchBarController = UISearchController(searchResultsController: RecordRouter.createModule())
     
@@ -21,27 +21,17 @@ class HomeViewController: UIViewController {
         setUp()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        searchBarController.isActive = false
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     private func setUp() {
         title = ""
-        
         navigationController?.themeNavigationBar()
         setUpSearchBar()
-        setupTable()
-        viewModel?.getClothesAndAccessories()
+        setupTableView()
+        viewModel?.resultProdcuts()
     }
     
     private func setUpSearchBar() {
         searchBarController.searchBar.searchTextField.placeholder = "Buscar en Mercado Libre"
+        searchBarController.searchBar.searchTextField.text = viewModel?.getTextDefault()
         searchBarController.searchBar.searchTextField.backgroundColor = .white
         searchBarController.searchBar.delegate = self
         searchBarController.hidesNavigationBarDuringPresentation = false
@@ -49,33 +39,20 @@ class HomeViewController: UIViewController {
         navigationItem.titleView = searchBarController.searchBar
     }
     
-    private func setupTable() {
-        productTableView.dataSource = self
-        productTableView.delegate = self
-        productTableView.separatorStyle = .none
-        productTableView.register(UINib(nibName: "ProductTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductTableViewCell")
-        productTableView.layer.cornerRadius = 8
-        
-        let header = UIView(frame: CGRect(x: .zero, y: .zero, width: view.frame.size.width, height: 50))
-        let headerLabel = UILabel()
-        headerLabel.backgroundColor = .clear
-        headerLabel.textColor = .black
-        headerLabel.text = "Ropa y Accesorios"
-        headerLabel.frame = CGRect(x: 10, y: .zero, width: view.frame.size.width, height: 50)
-        headerLabel.font = UIFont(name: "Helvetica", size: 18)
-
-        
-        header.addSubview(headerLabel)
-        productTableView.tableHeaderView = header
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.register(UINib(nibName: "ProductTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductTableViewCell")
+        tableView.layer.cornerRadius = 8
     }
-    
 }
-
+    
 // MARK: View Protocol
-extension HomeViewController: HomeViewProtocol {
+extension SearchViewController: SearchViewProtocol {
     func update() {
         DispatchQueue.main.async { [weak self] in
-            self?.productTableView.reloadData()
+            self?.tableView.reloadData()
         }
     }
     
@@ -85,9 +62,9 @@ extension HomeViewController: HomeViewProtocol {
 }
 
 // MARK: UITableViewDataSource, UITableViewDelegate
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.listProductsCount() ?? 0
+        return viewModel?.resultProdcutsCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -100,23 +77,19 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel?.productDetail(index: indexPath.row)
+        viewModel?.detail(index: indexPath.row)
     }
 }
 
 // MARK: UISearchBarDelegate
-extension HomeViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.searchTextField.text, text != "" else { return }
         searchBar.searchTextField.text = ""
         
-        viewModel?.search(text: text)
+        print(text)
+        
+        //viewModel?.search(text: text)
     }
 }
-
-
-    //https://www.hackingwithswift.com/example-code/system/how-to-save-user-settings-using-userdefaults
-   
-
     
-
