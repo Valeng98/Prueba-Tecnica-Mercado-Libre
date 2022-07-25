@@ -26,7 +26,7 @@ class SearchViewController: UIViewController {
         navigationController?.themeNavigationBar()
         setUpSearchBar()
         setupTableView()
-        viewModel?.resultProdcuts()
+        viewModel?.resultProdcuts(text: nil)
     }
     
     private func setUpSearchBar() {
@@ -34,9 +34,11 @@ class SearchViewController: UIViewController {
         searchBarController.searchBar.searchTextField.text = viewModel?.getTextDefault()
         searchBarController.searchBar.searchTextField.backgroundColor = .white
         searchBarController.searchBar.delegate = self
+        searchBarController.searchBar.showsCancelButton = true
         searchBarController.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
         navigationItem.titleView = searchBarController.searchBar
+        
     }
     
     private func setupTableView() {
@@ -85,11 +87,10 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.searchTextField.text, text != "" else { return }
-        searchBar.searchTextField.text = ""
         
-        print(text)
+        searchBarController.showsSearchResultsController = false
+        viewModel?.resultProdcuts(text: text)
         
-        //viewModel?.search(text: text)
     }
 }
     

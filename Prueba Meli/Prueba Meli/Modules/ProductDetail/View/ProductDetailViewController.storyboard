@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Product Detail View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="ProductDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="ProductDetailViewController" customModule="Prueba_Meli" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="ProductDetailViewController" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WIq-SB-lNs">
+                                <rect key="frame" x="102" y="102.5" width="210" height="210"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="0gz-VO-6AO"/>
+                                    <constraint firstAttribute="width" constant="210" id="rYZ-rI-DuJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csL-jN-536">
+                                <rect key="frame" x="15" y="64" width="384" height="18.5"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Precio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fes-tJ-TQN">
+                                <rect key="frame" x="15" y="327.5" width="384" height="29"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZID-Ro-8Uu">
+                                <rect key="frame" x="15" y="381.5" width="384" height="50"/>
+                                <color key="backgroundColor" red="0.20392156862745098" green="0.51372549019607838" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Urf-Ma-bZV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="16"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Comprar ahora">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fes-tJ-TQN" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="JCZ-QY-jIG"/>
+                            <constraint firstItem="WIq-SB-lNs" firstAttribute="top" secondItem="csL-jN-536" secondAttribute="bottom" constant="20" id="JfL-u5-ckp"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="csL-jN-536" secondAttribute="trailing" constant="15" id="Piq-wN-IOa"/>
+                            <constraint firstItem="ZID-Ro-8Uu" firstAttribute="top" secondItem="fes-tJ-TQN" secondAttribute="bottom" constant="25" id="Tbk-Iu-Tuv"/>
+                            <constraint firstItem="fes-tJ-TQN" firstAttribute="top" secondItem="WIq-SB-lNs" secondAttribute="bottom" constant="15" id="Ty7-NI-S2h"/>
+                            <constraint firstItem="csL-jN-536" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="UBW-Ac-ZWr"/>
+                            <constraint firstItem="ZID-Ro-8Uu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="VEW-k6-44V"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ZID-Ro-8Uu" secondAttribute="trailing" constant="15" id="WZi-yw-09I"/>
+                            <constraint firstItem="WIq-SB-lNs" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="eJP-4g-MAM"/>
+                            <constraint firstItem="csL-jN-536" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="nT6-1g-1f8"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fes-tJ-TQN" secondAttribute="trailing" constant="15" id="wpb-7l-tGo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buyButton" destination="ZID-Ro-8Uu" id="vC8-7V-H4d"/>
+                        <outlet property="priceLabel" destination="fes-tJ-TQN" id="rqc-9y-xZe"/>
+                        <outlet property="productImage" destination="WIq-SB-lNs" id="pbE-CD-OWe"/>
+                        <outlet property="titleLabel" destination="csL-jN-536" id="vT3-qe-nKP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="62"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

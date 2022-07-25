@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class HomeViewModel: HomeViewModelProtocol {
     weak var view: HomeViewProtocol?
@@ -39,6 +40,10 @@ class HomeViewModel: HomeViewModelProtocol {
     }
     
     func search(text: String) {
+        let defaults = UserDefaults.standard
+        
+        let listRecord = [text]
+        defaults.set(listRecord, forKey: "saveListRecord")
         router?.goToSearch(text: text)
     }
 }

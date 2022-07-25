@@ -8,6 +8,7 @@
 import Foundation
 
 class SearchViewModel: SearchViewModelProtocol {
+  
     var view: SearchViewProtocol?
     var router: SearchRouterProtocol?
     var textDefault: String?
@@ -19,8 +20,9 @@ class SearchViewModel: SearchViewModelProtocol {
         return textDefault ?? ""
     }
     
-    func resultProdcuts() {
-        MeliNetworkManager.shared.getSearch(query: textDefault ?? "") { [weak self] result in
+    func resultProdcuts(text: String?) {
+        let textQuery = text == nil ? textDefault : text
+        MeliNetworkManager.shared.getSearch(query: textQuery ?? "") { [weak self] result in
             switch result {
             case .success(let response):
                 self?.products = response.results
@@ -44,6 +46,7 @@ class SearchViewModel: SearchViewModelProtocol {
         let product = products?[index]
         router?.goToDetail(product: product)
     }
+
 }
 
 

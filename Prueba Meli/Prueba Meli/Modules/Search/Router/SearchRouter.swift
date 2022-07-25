@@ -30,4 +30,8 @@ class SearchRouter: SearchRouterProtocol {
     func goToDetail(product: Product?) {
         view?.navigationController?.pushViewController(ProductDetailRouter.createModule(product: product), animated: true)
     }
+    func writeSearch(text: String) {
+        view?.navigationController?.pushViewController(SearchRouter.createModule(text: text), animated: true)
+        
+    }
 }

@@ -2,35 +2,42 @@
 //  RecordViewController.swift
 //  Prueba Meli
 //
-//  Created by Valentina Guarnizo on 18/07/22.
+//  Created by Valentina Guarnizo on 19/07/22.
 //
 
 import UIKit
 
-class RecordViewController: UIViewController {
+class RecordViewController: UIViewController,RecordViewProtocol  {
+    var viewModel: RecordViewModelProtocol?
+    
+    @IBOutlet weak var recordTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .yellow
         
-        let someView = UIButton()
-        someView.addTarget(self, action: #selector(click), for: .touchUpInside)
-        someView.backgroundColor = .red
-        someView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(someView)
-        
-        NSLayoutConstraint.activate([
-            someView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            someView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            someView.heightAnchor.constraint(equalToConstant: 50),
-            someView.widthAnchor.constraint(equalToConstant: 50)
-        ])
+        view.backgroundColor = .white
+        setupTable()
+
     }
     
-    @objc func click() {
-        dismiss(animated: true, completion: nil)
-   
+    func setupTable() {
+        
+        recordTableView.delegate = self
+        recordTableView.dataSource = self
+        recordTableView.register(UINib(nibName: "RecordTableViewCell", bundle: nil), forCellReuseIdentifier: "RecordTableViewCell")
     }
+}
 
+extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecordTableViewCell") as? RecordTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        return cell
+    }
 }

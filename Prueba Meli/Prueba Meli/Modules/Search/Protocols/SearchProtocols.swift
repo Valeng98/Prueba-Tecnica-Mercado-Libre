@@ -14,9 +14,9 @@ protocol SearchRouterProtocol: AnyObject {
     
     static func createModule(text: String) -> SearchViewController
     
-    func goToDetail(product: Product?) 
-}
+    func goToDetail(product: Product?)
 
+}
 
 // MARK: - View Protocol
 protocol SearchViewProtocol: AnyObject {
@@ -34,7 +34,7 @@ protocol SearchViewModelProtocol: AnyObject {
     var textDefault: String? { get set }
     
     func getTextDefault() -> String
-    func resultProdcuts()
+    func resultProdcuts(text: String?)
     func resultProdcutsCount() -> Int?
     func getProduct(index: Int) -> Product?
     func detail(index: Int)

@@ -19,12 +19,19 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setUp()
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        definesPresentationContext = true
+
+    }
+     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        searchBarController.isActive = false
+        searchBarController.showsSearchResultsController = false
+        definesPresentationContext = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -112,10 +119,15 @@ extension HomeViewController: UISearchBarDelegate {
         
         viewModel?.search(text: text)
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchBarController.showsSearchResultsController && searchText != "" else { return }
+        searchBarController.showsSearchResultsController = true
+    }
 }
 
 
-    //https://www.hackingwithswift.com/example-code/system/how-to-save-user-settings-using-userdefaults
+
    
 
     
