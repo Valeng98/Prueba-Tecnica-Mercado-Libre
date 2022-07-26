@@ -46,6 +46,8 @@
 		EB3FD700288F358E00D39B04 /* ProductDetailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD6FF288F358E00D39B04 /* ProductDetailProtocols.swift */; };
 		EB3FD702288F35B300D39B04 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD701288F35B300D39B04 /* ProductDetailViewController.swift */; };
 		EB3FD704288F35CF00D39B04 /* ProductDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD703288F35CF00D39B04 /* ProductDetailViewController.storyboard */; };
+		EB3FD707289042C700D39B04 /* HelperRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD706289042C700D39B04 /* HelperRecord.swift */; };
+		EB3FD70928904D1600D39B04 /* Array+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD70828904D1600D39B04 /* Array+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		EB3FD6FF288F358E00D39B04 /* ProductDetailProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailProtocols.swift; sourceTree = "<group>"; };
 		EB3FD701288F35B300D39B04 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		EB3FD703288F35CF00D39B04 /* ProductDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProductDetailViewController.storyboard; sourceTree = "<group>"; };
+		EB3FD706289042C700D39B04 /* HelperRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperRecord.swift; sourceTree = "<group>"; };
+		EB3FD70828904D1600D39B04 /* Array+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extension.swift"; sourceTree = "<group>"; };
 		F76443A2A4BB05FA63DF3F91 /* Pods-Prueba Meli.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prueba Meli.debug.xcconfig"; path = "Target Support Files/Pods-Prueba Meli/Pods-Prueba Meli.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,6 +218,7 @@
 		EB01B04A28807A180003BE6D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				EB3FD7052890425100D39B04 /* Helper */,
 				EB2C0DE12882330800FE7126 /* Models */,
 				EB2C0DD528821E4100FE7126 /* NetworkManagers */,
 				EB01B04F2880A4D70003BE6D /* Extension */,
@@ -228,6 +233,7 @@
 				EB2C0DE628832F7700FE7126 /* UIImageView+Extension.swift */,
 				EB2C0DE8288390F600FE7126 /* UINavigationController+Extension.swift */,
 				EB07C9722884CDFD0039F7DD /* Double+Extension.swift */,
+				EB3FD70828904D1600D39B04 /* Array+extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -427,6 +433,14 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		EB3FD7052890425100D39B04 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FD706289042C700D39B04 /* HelperRecord.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -552,7 +566,9 @@
 				EB2C0DE9288390F600FE7126 /* UINavigationController+Extension.swift in Sources */,
 				EB07C97E2885C81C0039F7DD /* SearchViewController.swift in Sources */,
 				EB3FD6EE288F338900D39B04 /* RecordViewModel.swift in Sources */,
+				EB3FD70928904D1600D39B04 /* Array+extension.swift in Sources */,
 				EB3FD6FE288F355400D39B04 /* ProductDetailViewModel.swift in Sources */,
+				EB3FD707289042C700D39B04 /* HelperRecord.swift in Sources */,
 				EB01B049288075AB0003BE6D /* HomeProtocols.swift in Sources */,
 				EB2C0DE028821FC000FE7126 /* ErrorType.swift in Sources */,
 				EB07C9802885C8430039F7DD /* SearchProtocols.swift in Sources */,

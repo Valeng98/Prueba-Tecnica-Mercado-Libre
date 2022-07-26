@@ -13,12 +13,29 @@ class SearchViewController: UIViewController {
     
     var viewModel: SearchViewModelProtocol?
     
-    lazy var searchBarController = UISearchController(searchResultsController: RecordRouter.createModule())
+    lazy var searchBarController: UISearchController? = {
+        let resultsController = RecordRouter.createModule { [weak self] text in
+            self?.searchBarController?.searchBar.searchTextField.text = text
+            self?.viewModel?.resultProdcuts(text: text)
+        }
+        return UISearchController(searchResultsController: resultsController)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUp()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        definesPresentationContext = true
+    }
+     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        definesPresentationContext = false
     }
     
     private func setUp() {
@@ -30,15 +47,14 @@ class SearchViewController: UIViewController {
     }
     
     private func setUpSearchBar() {
-        searchBarController.searchBar.searchTextField.placeholder = "Buscar en Mercado Libre"
-        searchBarController.searchBar.searchTextField.text = viewModel?.getTextDefault()
-        searchBarController.searchBar.searchTextField.backgroundColor = .white
-        searchBarController.searchBar.delegate = self
-        searchBarController.searchBar.showsCancelButton = true
-        searchBarController.hidesNavigationBarDuringPresentation = false
+        searchBarController?.searchBar.searchTextField.placeholder = "Buscar en Mercado Libre"
+        searchBarController?.searchBar.searchTextField.text = viewModel?.getTextDefault()
+        searchBarController?.searchBar.searchTextField.backgroundColor = .white
+        searchBarController?.searchBar.delegate = self
+        searchBarController?.searchResultsUpdater = self
+        searchBarController?.hidesNavigationBarDuringPresentation = false
         definesPresentationContext = true
-        navigationItem.titleView = searchBarController.searchBar
-        
+        navigationItem.titleView = searchBarController?.searchBar
     }
     
     private func setupTableView() {
@@ -84,13 +100,20 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: UISearchBarDelegate
-extension SearchViewController: UISearchBarDelegate {
+extension SearchViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.searchTextField.text, text != "" else { return }
         
-        searchBarController.showsSearchResultsController = false
+        //searchBarController?.showsSearchResultsController = false
         viewModel?.resultProdcuts(text: text)
-        
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let vcResults = searchBarController?.searchResultsController as? RecordViewController {
+            definesPresentationContext = true
+            vcResults.viewModel?.getlistRecord()
+            vcResults.recordTableView.reloadData()
+        }
     }
 }
     

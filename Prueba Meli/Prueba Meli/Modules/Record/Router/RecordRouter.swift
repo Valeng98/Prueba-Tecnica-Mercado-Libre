@@ -11,7 +11,7 @@ import UIKit
 class RecordRouter: RecordRouterProtocol {
     var view: UIViewController?
     
-    static func createModule() -> RecordViewController {
+    static func createModule(selectRecord: @escaping ((String) -> Void)) -> RecordViewController {
         let router = RecordRouter()
         
         // MARK: Assign VVM - R
@@ -21,9 +21,13 @@ class RecordRouter: RecordRouterProtocol {
         view.viewModel = viewModel
         viewModel.view = view
         viewModel.router = router
+        viewModel.selectRecord = selectRecord
         router.view = view
         
         return view
-
+    }
+    
+    func close() {
+        view?.dismiss(animated: true, completion: nil)
     }
 }

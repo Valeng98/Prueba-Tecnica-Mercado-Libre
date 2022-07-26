@@ -8,11 +8,25 @@
 import Foundation
 
 class RecordViewModel: RecordViewModelProtocol {
-    
     var view: RecordViewProtocol?
     var router: RecordRouterProtocol?
+    var selectRecord: ((String) -> Void)?
+    private var listRecord: [String]?
     
+    func getlistRecord() {
+        listRecord = HelperRecord.recordList
+    }
     
+    func listRecordCount() -> Int? {
+        return listRecord?.count
+    }
     
+    func recordText(index: Int) -> String? {
+        return listRecord?[index]
+    }
     
+    func searchRecordText(index: Int) {
+        selectRecord?(listRecord?[index] ?? "")
+        router?.close()
+    }
 }

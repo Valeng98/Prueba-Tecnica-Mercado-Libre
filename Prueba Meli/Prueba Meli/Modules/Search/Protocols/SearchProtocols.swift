@@ -13,9 +13,7 @@ protocol SearchRouterProtocol: AnyObject {
     var view: UIViewController? { get set }
     
     static func createModule(text: String) -> SearchViewController
-    
     func goToDetail(product: Product?)
-
 }
 
 // MARK: - View Protocol
@@ -24,7 +22,6 @@ protocol SearchViewProtocol: AnyObject {
     
     func update()
     func update(with error: String)
-    
 }
 
 // MARK: - ViewModel Protocol

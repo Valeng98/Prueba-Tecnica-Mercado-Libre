@@ -12,7 +12,8 @@ import UIKit
 protocol RecordRouterProtocol {
     var view: UIViewController? { get set }
     
-    static func createModule() -> RecordViewController
+    static func createModule(selectRecord: @escaping ((String) -> Void)) -> RecordViewController
+    func close()
 }
 
 //MARK: View Protocol
@@ -26,5 +27,10 @@ protocol RecordViewProtocol {
 protocol RecordViewModelProtocol {
     var view: RecordViewProtocol? { get set }
     var router: RecordRouterProtocol? { get set }
+    var selectRecord: ((String) -> Void)? { get set }
     
+    func getlistRecord()
+    func listRecordCount() -> Int?
+    func recordText(index: Int) -> String?
+    func searchRecordText(index: Int)
 }

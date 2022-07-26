@@ -12,25 +12,28 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var productTableView: UITableView!
     
     var viewModel: HomeViewModelProtocol?
-    
-    lazy var searchBarController = UISearchController(searchResultsController: RecordRouter.createModule())
+    lazy var searchBarController: UISearchController? = {
+        let resultsController = RecordRouter.createModule { [weak self] text in
+            self?.viewModel?.search(text: text)
+        }
+        return UISearchController(searchResultsController: resultsController)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUp()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         definesPresentationContext = true
-
     }
      
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        searchBarController.showsSearchResultsController = false
+        searchBarController?.showsSearchResultsController = false
         definesPresentationContext = false
     }
     
@@ -48,12 +51,12 @@ class HomeViewController: UIViewController {
     }
     
     private func setUpSearchBar() {
-        searchBarController.searchBar.searchTextField.placeholder = "Buscar en Mercado Libre"
-        searchBarController.searchBar.searchTextField.backgroundColor = .white
-        searchBarController.searchBar.delegate = self
-        searchBarController.hidesNavigationBarDuringPresentation = false
-        definesPresentationContext = true
-        navigationItem.titleView = searchBarController.searchBar
+        searchBarController?.searchBar.searchTextField.placeholder = "Buscar en Mercado Libre"
+        searchBarController?.searchBar.searchTextField.backgroundColor = .white
+        searchBarController?.searchBar.delegate = self
+        searchBarController?.hidesNavigationBarDuringPresentation = false
+        searchBarController?.searchResultsUpdater = self
+        navigationItem.titleView = searchBarController?.searchBar
     }
     
     private func setupTable() {
@@ -112,7 +115,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 // MARK: UISearchBarDelegate
-extension HomeViewController: UISearchBarDelegate {
+extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.searchTextField.text, text != "" else { return }
         searchBar.searchTextField.text = ""
@@ -121,14 +124,14 @@ extension HomeViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchBarController.showsSearchResultsController && searchText != "" else { return }
-        searchBarController.showsSearchResultsController = true
+        guard !(searchBarController?.showsSearchResultsController ?? false) && searchText != "" else { return }
+        searchBarController?.showsSearchResultsController = true
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let vcResults = searchBarController?.searchResultsController as? RecordViewController {
+            vcResults.viewModel?.getlistRecord()
+            vcResults.recordTableView.reloadData()
+        }
     }
 }
-
-
-
-   
-
-    
-

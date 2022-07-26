@@ -8,20 +8,26 @@
 import Foundation
 
 class SearchViewModel: SearchViewModelProtocol {
-  
     var view: SearchViewProtocol?
     var router: SearchRouterProtocol?
     var textDefault: String?
-    
     private var products: [Product]?
-
     
+    private func saveRecord(text: String) {
+        var listRecord = HelperRecord.recordList
+        listRecord.insert(text, at: .zero)
+        
+        HelperRecord.recordList = listRecord
+    }
+
     func getTextDefault() -> String {
         return textDefault ?? ""
     }
     
     func resultProdcuts(text: String?) {
         let textQuery = text == nil ? textDefault : text
+        saveRecord(text: textQuery ?? "")
+        
         MeliNetworkManager.shared.getSearch(query: textQuery ?? "") { [weak self] result in
             switch result {
             case .success(let response):
@@ -31,7 +37,6 @@ class SearchViewModel: SearchViewModelProtocol {
                 self?.view?.update(with: error.localizedDescription)
             }
         }
-        
     }
     
     func resultProdcutsCount() -> Int? {
@@ -46,7 +51,6 @@ class SearchViewModel: SearchViewModelProtocol {
         let product = products?[index]
         router?.goToDetail(product: product)
     }
-
 }
 
 

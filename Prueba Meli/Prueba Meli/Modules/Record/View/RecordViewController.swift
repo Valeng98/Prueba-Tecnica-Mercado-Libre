@@ -15,22 +15,38 @@ class RecordViewController: UIViewController,RecordViewProtocol  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setUp()
+    }
+    
+    private func setUp() {
         view.backgroundColor = .white
         setupTable()
-
+        viewModel?.getlistRecord()
     }
     
     func setupTable() {
-        
         recordTableView.delegate = self
         recordTableView.dataSource = self
+        recordTableView.separatorStyle = .none
         recordTableView.register(UINib(nibName: "RecordTableViewCell", bundle: nil), forCellReuseIdentifier: "RecordTableViewCell")
+        
+        let header = UIView(frame: CGRect(x: .zero, y: .zero, width: view.frame.size.width, height: 50))
+        let headerLabel = UILabel()
+        headerLabel.backgroundColor = .clear
+        headerLabel.textColor = .black
+        headerLabel.text = "Últimas búsquedas"
+        headerLabel.frame = CGRect(x: 10, y: .zero, width: view.frame.size.width, height: 50)
+        headerLabel.font = UIFont(name: "Helvetica", size: 18)
+
+        
+        header.addSubview(headerLabel)
+        recordTableView.tableHeaderView = header
     }
 }
 
 extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModel?.listRecordCount() ?? .zero
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -38,6 +54,11 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.setUp(text: viewModel?.recordText(index: indexPath.row))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.searchRecordText(index: indexPath.row)
     }
 }

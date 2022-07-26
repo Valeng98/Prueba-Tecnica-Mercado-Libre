@@ -14,6 +14,13 @@ class HomeViewModel: HomeViewModelProtocol {
     
     private var products: [Product]?
     
+    private func saveRecord(text: String) {
+        var listRecord = HelperRecord.recordList
+        listRecord.insert(text, at: .zero)
+        
+        HelperRecord.recordList = listRecord
+    }
+    
     func getClothesAndAccessories() {
         MeliNetworkManager.shared.getClothesAndAccessories { [weak self] result in
             switch result {
@@ -40,10 +47,7 @@ class HomeViewModel: HomeViewModelProtocol {
     }
     
     func search(text: String) {
-        let defaults = UserDefaults.standard
-        
-        let listRecord = [text]
-        defaults.set(listRecord, forKey: "saveListRecord")
+        saveRecord(text: text)
         router?.goToSearch(text: text)
     }
 }

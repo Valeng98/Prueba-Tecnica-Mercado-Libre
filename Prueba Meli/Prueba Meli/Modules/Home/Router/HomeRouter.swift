@@ -32,7 +32,5 @@ class HomeRouter: HomeRouterProtocol {
     
     func goToSearch(text: String) {
         view?.navigationController?.pushViewController(SearchRouter.createModule(text: text), animated: true)
-        
-        
     }
 }
