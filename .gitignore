@@ -2,4 +2,5 @@
 .DS_Store
 
 # CocoaPods
-Meli/Pods/
+Podfile.lock
+Pods/
