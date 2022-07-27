@@ -63,7 +63,7 @@ class HomeViewController: UIViewController {
         productTableView.dataSource = self
         productTableView.delegate = self
         productTableView.separatorStyle = .none
-        productTableView.register(UINib(nibName: "ProductTableViewCell", bundle: nil), forCellReuseIdentifier: "ProductTableViewCell")
+        productTableView.register(UINib(nibName: ProductTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ProductTableViewCell.identifier)
         productTableView.layer.cornerRadius = 8
         
         let header = UIView(frame: CGRect(x: .zero, y: .zero, width: view.frame.size.width, height: 50))
@@ -101,7 +101,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as? ProductTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.identifier, for: indexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
         

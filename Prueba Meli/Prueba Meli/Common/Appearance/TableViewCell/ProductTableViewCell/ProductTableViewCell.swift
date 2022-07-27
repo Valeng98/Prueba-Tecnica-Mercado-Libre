@@ -8,13 +8,12 @@
 import UIKit
 
 class ProductTableViewCell: UITableViewCell {
-
-    static let identifier = "ProductTableViewCell"
     
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
+    static let identifier = "ProductTableViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -39,6 +39,4 @@ class ProductDetailViewController: UIViewController {
     }
 }
 
-extension ProductDetailViewController: ProductDetailViewProtocol {
-
-}
+extension ProductDetailViewController: ProductDetailViewProtocol {}

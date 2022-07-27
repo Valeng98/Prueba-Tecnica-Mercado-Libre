@@ -31,6 +31,5 @@ class ProductDetailRouter: ProductDetailRouterProtocol {
     func openUrl(url: URL) {
         UIApplication.shared.open(url)
     }
-    
 }
 

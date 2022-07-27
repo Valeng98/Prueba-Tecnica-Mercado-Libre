@@ -28,7 +28,7 @@ class RecordViewController: UIViewController,RecordViewProtocol  {
         recordTableView.delegate = self
         recordTableView.dataSource = self
         recordTableView.separatorStyle = .none
-        recordTableView.register(UINib(nibName: "RecordTableViewCell", bundle: nil), forCellReuseIdentifier: "RecordTableViewCell")
+        recordTableView.register(UINib(nibName: RecordTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: RecordTableViewCell.identifier)
         
         let header = UIView(frame: CGRect(x: .zero, y: .zero, width: view.frame.size.width, height: 50))
         let headerLabel = UILabel()
@@ -50,7 +50,7 @@ extension RecordViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "RecordTableViewCell") as? RecordTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: RecordTableViewCell.identifier) as? RecordTableViewCell else {
             return UITableViewCell()
         }
         
