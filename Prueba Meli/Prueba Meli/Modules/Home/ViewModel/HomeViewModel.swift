@@ -42,8 +42,9 @@ class HomeViewModel: HomeViewModelProtocol {
     }
     
     func productDetail(index: Int) {
-        let product = products?[index]
-        router?.goToProductDetail(product: product)
+        if let product = products?[index] {
+            router?.goToProductDetail(product: product)
+        }
     }
     
     func search(text: String) {

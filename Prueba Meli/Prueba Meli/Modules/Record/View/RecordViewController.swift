@@ -18,10 +18,10 @@ class RecordViewController: UIViewController,RecordViewProtocol  {
         setUp()
     }
     
-    private func setUp() {
+    func setUp() {
         view.backgroundColor = .white
         setupTable()
-        viewModel?.getlistRecord()
+        valiteError()
     }
     
     func setupTable() {
@@ -38,9 +38,24 @@ class RecordViewController: UIViewController,RecordViewProtocol  {
         headerLabel.frame = CGRect(x: 10, y: .zero, width: view.frame.size.width, height: 50)
         headerLabel.font = UIFont(name: "Helvetica", size: 18)
 
-        
         header.addSubview(headerLabel)
         recordTableView.tableHeaderView = header
+    }
+    
+    func valiteError() {
+        viewModel?.getlistRecord()
+        if viewModel?.listRecordCount() ?? .zero == .zero {
+            let info = InformationViewModel(title: "Bienbenido !!",
+                                            description: "Aqui encontraras tu historial de busquedas",
+                                            image: "search")
+            alert(model: info)
+        } else {
+            self.view.subviews.forEach { subView in
+                if let infoView = subView as? InformationView {
+                    infoView.removeFromSuperview()
+                }
+            }
+        }
     }
 }
 

@@ -17,4 +17,19 @@ extension UIViewController {
         let className = String(describing: self)
         return instantiate(from: UIStoryboard(name: className, bundle: Bundle(for: self)), identifier: className)
     }
+    
+    func alert(model: InformationViewModel) {
+        let viewInformation = InformationView(frame: view.frame)
+        view.addSubview(viewInformation)
+        
+        viewInformation.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            viewInformation.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            viewInformation.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            viewInformation.topAnchor.constraint(equalTo: view.topAnchor),
+            viewInformation.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+        
+        viewInformation.setup(model: model)
+    }
 }

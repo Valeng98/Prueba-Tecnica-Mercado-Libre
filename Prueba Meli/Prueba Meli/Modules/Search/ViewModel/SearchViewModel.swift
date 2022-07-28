@@ -25,9 +25,9 @@ class SearchViewModel: SearchViewModelProtocol {
     }
     
     func resultProdcuts(text: String?) {
+        products = nil
         let textQuery = text == nil ? textDefault : text
         saveRecord(text: textQuery ?? "")
-        
         MeliNetworkManager.shared.getSearch(query: textQuery ?? "") { [weak self] result in
             switch result {
             case .success(let response):

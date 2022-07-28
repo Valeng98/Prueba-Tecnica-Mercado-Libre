@@ -48,6 +48,9 @@
 		EB3FD704288F35CF00D39B04 /* ProductDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD703288F35CF00D39B04 /* ProductDetailViewController.storyboard */; };
 		EB3FD707289042C700D39B04 /* HelperRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD706289042C700D39B04 /* HelperRecord.swift */; };
 		EB3FD70928904D1600D39B04 /* Array+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD70828904D1600D39B04 /* Array+extension.swift */; };
+		EB3FD71B2891B09900D39B04 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD7192891B09900D39B04 /* InformationView.swift */; };
+		EB3FD71D2891B17000D39B04 /* InformationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FD7162891AE8200D39B04 /* InformationViewModel.swift */; };
+		EB3FD7222891CEB900D39B04 /* InformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EB3FD7212891CEB900D39B04 /* InformationView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +98,9 @@
 		EB3FD703288F35CF00D39B04 /* ProductDetailViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ProductDetailViewController.storyboard; sourceTree = "<group>"; };
 		EB3FD706289042C700D39B04 /* HelperRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperRecord.swift; sourceTree = "<group>"; };
 		EB3FD70828904D1600D39B04 /* Array+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+extension.swift"; sourceTree = "<group>"; };
+		EB3FD7162891AE8200D39B04 /* InformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationViewModel.swift; sourceTree = "<group>"; };
+		EB3FD7192891B09900D39B04 /* InformationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
+		EB3FD7212891CEB900D39B04 /* InformationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationView.xib; sourceTree = "<group>"; };
 		F76443A2A4BB05FA63DF3F91 /* Pods-Prueba Meli.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Prueba Meli.debug.xcconfig"; path = "Target Support Files/Pods-Prueba Meli/Pods-Prueba Meli.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -444,6 +450,7 @@
 		EB3FD70A2890D96000D39B04 /* Appearance */ = {
 			isa = PBXGroup;
 			children = (
+				EB3FD70E2891A6EA00D39B04 /* CustomView */,
 				EB3FD70B2890D96B00D39B04 /* TableViewCell */,
 			);
 			path = Appearance;
@@ -457,6 +464,40 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		EB3FD70E2891A6EA00D39B04 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FD70F2891A6F400D39B04 /* InformationView */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		EB3FD70F2891A6F400D39B04 /* InformationView */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FD7152891AE6800D39B04 /* Model */,
+				EB3FD7142891AE3900D39B04 /* View */,
+			);
+			path = InformationView;
+			sourceTree = "<group>";
+		};
+		EB3FD7142891AE3900D39B04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FD7212891CEB900D39B04 /* InformationView.xib */,
+				EB3FD7192891B09900D39B04 /* InformationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB3FD7152891AE6800D39B04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB3FD7162891AE8200D39B04 /* InformationViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -468,6 +509,7 @@
 				EB01B01F287F0A4E0003BE6D /* Sources */,
 				EB01B020287F0A4E0003BE6D /* Frameworks */,
 				EB01B021287F0A4E0003BE6D /* Resources */,
+				8F3A1DA3F75E8C3678212557 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -516,6 +558,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB3FD7222891CEB900D39B04 /* InformationView.xib in Resources */,
 				EB3FD704288F35CF00D39B04 /* ProductDetailViewController.storyboard in Resources */,
 				EB01B042288070D80003BE6D /* HomeViewController.storyboard in Resources */,
 				EB01B0542880BD810003BE6D /* ProductTableViewCell.xib in Resources */,
@@ -552,6 +595,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8F3A1DA3F75E8C3678212557 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Prueba Meli/Pods-Prueba Meli-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Prueba Meli/Pods-Prueba Meli-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Prueba Meli/Pods-Prueba Meli-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -559,6 +619,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB3FD71D2891B17000D39B04 /* InformationViewModel.swift in Sources */,
 				EB2C0DE728832F7700FE7126 /* UIImageView+Extension.swift in Sources */,
 				EB3FD6F0288F33C200D39B04 /* RecordRouter.swift in Sources */,
 				EB01B0462880713A0003BE6D /* HomeRouter.swift in Sources */,
@@ -571,6 +632,7 @@
 				EB3FD6F8288F34B000D39B04 /* RecordTableViewCell.swift in Sources */,
 				EB3FD700288F358E00D39B04 /* ProductDetailProtocols.swift in Sources */,
 				EB01B04E28807AF50003BE6D /* UIViewController+Extension.swift in Sources */,
+				EB3FD71B2891B09900D39B04 /* InformationView.swift in Sources */,
 				EB2C0DDE28821F9400FE7126 /* EndPointType.swift in Sources */,
 				EB2C0DDC28821F7D00FE7126 /* Services.swift in Sources */,
 				EB01B029287F0A4E0003BE6D /* SceneDelegate.swift in Sources */,

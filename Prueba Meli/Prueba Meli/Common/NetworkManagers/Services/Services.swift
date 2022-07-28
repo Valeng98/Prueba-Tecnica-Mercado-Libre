@@ -23,9 +23,14 @@ class Services {
             return
         }
         
-        let task = session.dataTask(with: url) { data, _, error in
+        let task = session.dataTask(with: url) { data, response, error in
             if let error = error {
                 completion(.failure(ErrorType.internal(reason: error.localizedDescription)))
+            }
+            
+            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                completion(.failure(ErrorType.internal(reason: "Server error!")))
+                return
             }
             
             guard let data = data else {

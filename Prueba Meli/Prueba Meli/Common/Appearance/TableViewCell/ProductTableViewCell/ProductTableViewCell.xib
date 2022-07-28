@@ -17,29 +17,41 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r52-aY-OzF">
-                        <rect key="frame" x="0.0" y="10" width="100" height="100"/>
+                        <rect key="frame" x="10" y="10" width="100" height="100"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="0tJ-qB-ESs"/>
                             <constraint firstAttribute="height" constant="100" id="43M-eJ-Msx"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wXg-OD-rmf">
-                        <rect key="frame" x="105" y="10" width="205" height="45.5"/>
+                        <rect key="frame" x="115" y="10" width="195" height="45.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynY-YQ-8NR">
-                                <rect key="frame" x="0.0" y="0.0" width="205" height="16.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="195" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Precio" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swN-Qq-wlO">
-                                <rect key="frame" x="0.0" y="24.5" width="205" height="21"/>
+                                <rect key="frame" x="0.0" y="24.5" width="195" height="21"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cu9-nm-aIg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
@@ -54,15 +66,21 @@
                     <constraint firstAttribute="bottom" secondItem="r52-aY-OzF" secondAttribute="bottom" constant="10" id="38e-DC-6Rn"/>
                     <constraint firstAttribute="trailing" secondItem="wXg-OD-rmf" secondAttribute="trailing" constant="10" id="GVI-iQ-pOM"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wXg-OD-rmf" secondAttribute="bottom" constant="5" id="Jwe-CB-QCp"/>
-                    <constraint firstItem="r52-aY-OzF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MnX-x3-VMz"/>
+                    <constraint firstItem="r52-aY-OzF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="MnX-x3-VMz"/>
                     <constraint firstItem="wXg-OD-rmf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="NOh-iv-CZd"/>
                     <constraint firstItem="wXg-OD-rmf" firstAttribute="leading" secondItem="r52-aY-OzF" secondAttribute="trailing" constant="5" id="dQ6-CS-tnn"/>
                     <constraint firstItem="cu9-nm-aIg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kNg-go-bp1"/>
                     <constraint firstAttribute="trailing" secondItem="cu9-nm-aIg" secondAttribute="trailing" id="lxg-Yw-gWl"/>
                     <constraint firstItem="r52-aY-OzF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nqE-Zm-ruf"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="priceLabel" destination="swN-Qq-wlO" id="1G3-g6-cQl"/>
                 <outlet property="productImage" destination="r52-aY-OzF" id="Xcs-9v-Qac"/>

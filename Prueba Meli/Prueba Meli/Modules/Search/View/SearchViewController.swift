@@ -75,18 +75,24 @@ extension SearchViewController: SearchViewProtocol {
     }
     
     func update(with error: String) {
-        print(error)
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.isHidden = true
+            let info = InformationViewModel(title: "Algo salió mal",
+                                            description: "Estamos trabajando para solucionarlo",
+                                            image: "otherError")
+            self?.alert(model: info)
+        }
     }
 }
 
 // MARK: UITableViewDataSource, UITableViewDelegate
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.resultProdcutsCount() ?? 0
+        return viewModel?.resultProdcutsCount() ?? 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductTableViewCell", for: indexPath) as? ProductTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductTableViewCell.identifier, for: indexPath) as? ProductTableViewCell else {
             return UITableViewCell()
         }
         
@@ -104,13 +110,15 @@ extension SearchViewController: UISearchBarDelegate, UISearchResultsUpdating {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.searchTextField.text, text != "" else { return }
         
-        //searchBarController?.showsSearchResultsController = false
+        searchBarController?.showsSearchResultsController = false
         viewModel?.resultProdcuts(text: text)
+        tableView.reloadData()
     }
     
     func updateSearchResults(for searchController: UISearchController) {
         if let vcResults = searchBarController?.searchResultsController as? RecordViewController {
             definesPresentationContext = true
+            searchBarController?.showsSearchResultsController = true
             vcResults.viewModel?.getlistRecord()
             vcResults.recordTableView.reloadData()
         }

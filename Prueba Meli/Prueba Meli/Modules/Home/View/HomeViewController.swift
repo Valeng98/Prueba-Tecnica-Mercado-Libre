@@ -6,17 +6,34 @@
 //
 
 import UIKit
+import SkeletonView
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var productTableView: UITableView!
+    @IBOutlet private weak var productTableView: UITableView!
     
     var viewModel: HomeViewModelProtocol?
-    lazy var searchBarController: UISearchController? = {
+    
+    private lazy var searchBarController: UISearchController? = {
         let resultsController = RecordRouter.createModule { [weak self] text in
             self?.viewModel?.search(text: text)
         }
         return UISearchController(searchResultsController: resultsController)
+    }()
+    
+    private lazy var headerTable: UIView? = {
+        let header = UIView(frame: CGRect(x: .zero, y: .zero, width: view.frame.size.width, height: 50))
+        header.isSkeletonable = true
+        let headerLabel = UILabel()
+        headerLabel.backgroundColor = .clear
+        headerLabel.textColor = .black
+        headerLabel.text = "Ropa y Accesorios"
+        headerLabel.frame = CGRect(x: 10, y: .zero, width: view.frame.size.width, height: 50)
+        headerLabel.font = UIFont(name: "Helvetica", size: 18)
+        headerLabel.isSkeletonable = true
+        
+        header.addSubview(headerLabel)
+        return header
     }()
     
     override func viewDidLoad() {
@@ -53,6 +70,7 @@ class HomeViewController: UIViewController {
     private func setUpSearchBar() {
         searchBarController?.searchBar.searchTextField.placeholder = "Buscar en Mercado Libre"
         searchBarController?.searchBar.searchTextField.backgroundColor = .white
+        searchBarController?.searchBar.searchTextField.isEnabled = false
         searchBarController?.searchBar.delegate = self
         searchBarController?.hidesNavigationBarDuringPresentation = false
         searchBarController?.searchResultsUpdater = self
@@ -65,39 +83,41 @@ class HomeViewController: UIViewController {
         productTableView.separatorStyle = .none
         productTableView.register(UINib(nibName: ProductTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ProductTableViewCell.identifier)
         productTableView.layer.cornerRadius = 8
-        
-        let header = UIView(frame: CGRect(x: .zero, y: .zero, width: view.frame.size.width, height: 50))
-        let headerLabel = UILabel()
-        headerLabel.backgroundColor = .clear
-        headerLabel.textColor = .black
-        headerLabel.text = "Ropa y Accesorios"
-        headerLabel.frame = CGRect(x: 10, y: .zero, width: view.frame.size.width, height: 50)
-        headerLabel.font = UIFont(name: "Helvetica", size: 18)
-
-        
-        header.addSubview(headerLabel)
-        productTableView.tableHeaderView = header
+        productTableView.isScrollEnabled = false
+        productTableView.tableHeaderView = headerTable
+        productTableView.tableHeaderView?.isSkeletonable = true
+        headerTable?.showAnimatedSkeleton()
     }
-    
 }
 
 // MARK: View Protocol
 extension HomeViewController: HomeViewProtocol {
     func update() {
         DispatchQueue.main.async { [weak self] in
+            self?.productTableView.isScrollEnabled = true
+            self?.searchBarController?.searchBar.searchTextField.isEnabled = true
+            self?.headerTable?.hideSkeleton()
             self?.productTableView.reloadData()
         }
     }
     
     func update(with error: String) {
-        print(error)
+        DispatchQueue.main.async { [weak self] in
+            self?.headerTable?.hideSkeleton()
+            self?.productTableView.isHidden = true
+            
+            let info = InformationViewModel(title: "Algo salió mal",
+                                            description: "Estamos trabajando para solucionarlo",
+                                            image: "otherError")
+            self?.alert(model: info)
+        }
     }
 }
 
 // MARK: UITableViewDataSource, UITableViewDelegate
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel?.listProductsCount() ?? 0
+        return viewModel?.listProductsCount() ?? 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -130,7 +150,7 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         if let vcResults = searchBarController?.searchResultsController as? RecordViewController {
-            vcResults.viewModel?.getlistRecord()
+            vcResults.setUp()
             vcResults.recordTableView.reloadData()
         }
     }

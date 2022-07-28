@@ -1,0 +1,7 @@
+
+Showing Recent Messages
+Package.resolved file is corrupted or malformed; fix or delete the file to continue: unsupported schema version 2
+
+
+
+Resolving Package Graph Failed    27/07/22, 8:50 PM    0.4 seconds

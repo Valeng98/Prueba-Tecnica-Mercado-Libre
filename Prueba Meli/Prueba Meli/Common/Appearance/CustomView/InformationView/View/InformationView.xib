@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InformationView" customModule="Prueba_Meli" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="OXv-13-MoD"/>
+                <outlet property="descriptionLabel" destination="7K2-P2-jkA" id="Mn2-Q0-K9E"/>
+                <outlet property="infoImage" destination="his-zP-dTL" id="LgU-EL-Lpb"/>
+                <outlet property="titleLabel" destination="Y1B-lp-3Bb" id="7yf-Kj-MFW"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEB-LP-9iM">
+                    <rect key="frame" x="0.0" y="293.5" width="414" height="309.5"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="his-zP-dTL">
+                            <rect key="frame" x="107" y="16" width="200" height="200"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="RiL-hN-Jwz"/>
+                                <constraint firstAttribute="height" constant="200" id="YMo-Eb-FfF"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y1B-lp-3Bb">
+                            <rect key="frame" x="25" y="232" width="364" height="24"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7K2-P2-jkA">
+                            <rect key="frame" x="20" y="272" width="374" height="21.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="7K2-P2-jkA" firstAttribute="centerX" secondItem="NEB-LP-9iM" secondAttribute="centerX" id="57J-PP-tjO"/>
+                        <constraint firstItem="Y1B-lp-3Bb" firstAttribute="leading" secondItem="NEB-LP-9iM" secondAttribute="leading" constant="25" id="KhL-Bh-b1e"/>
+                        <constraint firstAttribute="bottom" secondItem="7K2-P2-jkA" secondAttribute="bottom" constant="16" id="Q7B-s1-pCr"/>
+                        <constraint firstItem="his-zP-dTL" firstAttribute="top" secondItem="NEB-LP-9iM" secondAttribute="top" constant="16" id="SgI-8r-GeB"/>
+                        <constraint firstItem="7K2-P2-jkA" firstAttribute="top" secondItem="Y1B-lp-3Bb" secondAttribute="bottom" constant="16" id="YaJ-tA-afv"/>
+                        <constraint firstItem="Y1B-lp-3Bb" firstAttribute="top" secondItem="his-zP-dTL" secondAttribute="bottom" constant="16" id="cGy-Az-vuP"/>
+                        <constraint firstItem="7K2-P2-jkA" firstAttribute="leading" secondItem="NEB-LP-9iM" secondAttribute="leading" constant="20" id="g7F-98-0AU"/>
+                        <constraint firstAttribute="trailing" secondItem="Y1B-lp-3Bb" secondAttribute="trailing" constant="25" id="gZc-3U-Ha3"/>
+                        <constraint firstItem="his-zP-dTL" firstAttribute="centerX" secondItem="NEB-LP-9iM" secondAttribute="centerX" id="gd5-6M-H1Q"/>
+                        <constraint firstItem="Y1B-lp-3Bb" firstAttribute="centerX" secondItem="NEB-LP-9iM" secondAttribute="centerX" id="rkB-ez-abG"/>
+                        <constraint firstAttribute="trailing" secondItem="7K2-P2-jkA" secondAttribute="trailing" constant="20" id="wOy-fa-KXP"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="NEB-LP-9iM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9eB-3w-Lh7"/>
+                <constraint firstItem="NEB-LP-9iM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="e1d-Ah-aQ2"/>
+                <constraint firstAttribute="trailing" secondItem="NEB-LP-9iM" secondAttribute="trailing" id="yib-Jn-PeJ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="100.44642857142857"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="search" width="512" height="512"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

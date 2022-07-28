@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class ProductTableViewCell: UITableViewCell {
     
@@ -28,8 +29,12 @@ class ProductTableViewCell: UITableViewCell {
     }
 
     func configureCell(product: Product?) {
-        guard let product = product else { return }
+        guard let product = product else {
+            contentView.showAnimatedSkeleton()
+            return
+        }
         
+        contentView.hideSkeleton()
         titleLabel.text = product.title
         priceLabel.text = product.price.moneyFormat()
         productImage.downloadUrl(url: product.thumbnail)
