@@ -50,3 +50,9 @@ protocol RecordViewModelProtocol: AnyObject {
     var router: RecordRouterProtocol? { get set }   
 }
 ```
+## Evidence
+<img src="https://github.com/Valeng98/Prueba-Tecnica-Mercado-Libre/blob/main/Evidencia.gif" width="250"/>
+
+<img src="https://github.com/Valeng98/Prueba-Tecnica-Mercado-Libre/blob/main/Evidencia-Error.gif" width="250"/>
+
+
