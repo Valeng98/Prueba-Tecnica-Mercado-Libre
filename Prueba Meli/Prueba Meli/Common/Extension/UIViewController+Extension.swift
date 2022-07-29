@@ -18,7 +18,7 @@ extension UIViewController {
         return instantiate(from: UIStoryboard(name: className, bundle: Bundle(for: self)), identifier: className)
     }
     
-    func alert(model: InformationViewModel) {
+    func alertView(model: InformationViewModel) {
         let viewInformation = InformationView(frame: view.frame)
         view.addSubview(viewInformation)
         
@@ -31,5 +31,12 @@ extension UIViewController {
         ])
         
         viewInformation.setup(model: model)
+    }
+    
+    func alertModal(mensaje: String, completion: ((UIAlertAction) -> Void)? = nil){
+        let alert = UIAlertController(title: "Alerta!", message: mensaje, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cerrar", style: .cancel, handler: completion))
+            
+        present(alert, animated: true)
     }
 }

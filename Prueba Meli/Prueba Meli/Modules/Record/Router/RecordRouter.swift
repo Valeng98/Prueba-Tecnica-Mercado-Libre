@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 class RecordRouter: RecordRouterProtocol {
-    var view: UIViewController?
+    weak var view: UIViewController?
     
     static func createModule(selectRecord: @escaping ((String) -> Void)) -> RecordViewController {
         let router = RecordRouter()
         
         // MARK: Assign VVM - R
         let view = RecordViewController.instantiate()
-        var viewModel: RecordViewModelProtocol = RecordViewModel()
+        let viewModel: RecordViewModelProtocol = RecordViewModel()
        
         view.viewModel = viewModel
         viewModel.view = view

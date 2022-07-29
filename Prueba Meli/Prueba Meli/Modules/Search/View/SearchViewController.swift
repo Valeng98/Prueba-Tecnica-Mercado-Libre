@@ -80,7 +80,7 @@ extension SearchViewController: SearchViewProtocol {
             let info = InformationViewModel(title: "Algo salió mal",
                                             description: "Estamos trabajando para solucionarlo",
                                             image: "otherError")
-            self?.alert(model: info)
+            self?.alertView(model: info)
         }
     }
 }

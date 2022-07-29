@@ -8,8 +8,7 @@
 import Foundation
 
 class ProductDetailViewModel: ProductDetailViewModelProtocol {
-    
-    weak  var view: ProductDetailViewProtocol?
+    weak var view: ProductDetailViewProtocol?
     var router: ProductDetailRouterProtocol?
     var product: Product?
     
@@ -22,5 +21,4 @@ class ProductDetailViewModel: ProductDetailViewModelProtocol {
             router?.openUrl(url: url)
         }
     }
-    
 }

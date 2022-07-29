@@ -33,12 +33,10 @@ class ProductTableViewCell: UITableViewCell {
             contentView.showAnimatedSkeleton()
             return
         }
-        
         contentView.hideSkeleton()
         titleLabel.text = product.title
         priceLabel.text = product.price.moneyFormat()
         productImage.downloadUrl(url: product.thumbnail)
-        
     }
 }
 

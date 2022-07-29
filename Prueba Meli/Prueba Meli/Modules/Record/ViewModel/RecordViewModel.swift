@@ -8,7 +8,7 @@
 import Foundation
 
 class RecordViewModel: RecordViewModelProtocol {
-    var view: RecordViewProtocol?
+    weak var view: RecordViewProtocol?
     var router: RecordRouterProtocol?
     var selectRecord: ((String) -> Void)?
     private var listRecord: [String]?

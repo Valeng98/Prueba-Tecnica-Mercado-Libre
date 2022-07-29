@@ -22,6 +22,5 @@ extension UINavigationController {
         navigationBar.standardAppearance = appearance
         navigationBar.compactAppearance = appearance
         navigationBar.scrollEdgeAppearance = appearance
-        
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 //MARK: Roter Protocol
-protocol RecordRouterProtocol {
+protocol RecordRouterProtocol: AnyObject {
     var view: UIViewController? { get set }
     
     static func createModule(selectRecord: @escaping ((String) -> Void)) -> RecordViewController
@@ -17,14 +17,12 @@ protocol RecordRouterProtocol {
 }
 
 //MARK: View Protocol
-protocol RecordViewProtocol {
+protocol RecordViewProtocol: AnyObject {
     var viewModel: RecordViewModelProtocol? { get set }
-    
-    
 }
 
 //MARK: ViewModel Protocol
-protocol RecordViewModelProtocol {
+protocol RecordViewModelProtocol: AnyObject {
     var view: RecordViewProtocol? { get set }
     var router: RecordRouterProtocol? { get set }
     var selectRecord: ((String) -> Void)? { get set }

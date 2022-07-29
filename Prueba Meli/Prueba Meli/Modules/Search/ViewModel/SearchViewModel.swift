@@ -8,7 +8,7 @@
 import Foundation
 
 class SearchViewModel: SearchViewModelProtocol {
-    var view: SearchViewProtocol?
+    weak var view: SearchViewProtocol?
     var router: SearchRouterProtocol?
     var textDefault: String?
     private var products: [Product]?

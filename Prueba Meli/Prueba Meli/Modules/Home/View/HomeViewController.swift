@@ -7,12 +7,16 @@
 
 import UIKit
 import SkeletonView
+import CoreLocation
 
 class HomeViewController: UIViewController {
     
     @IBOutlet private weak var productTableView: UITableView!
     
     var viewModel: HomeViewModelProtocol?
+    var currentLocation: CLLocation?
+    
+    let locationManager = CLLocationManager()
     
     private lazy var searchBarController: UISearchController? = {
         let resultsController = RecordRouter.createModule { [weak self] text in
@@ -45,6 +49,11 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         definesPresentationContext = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setupLocation()
     }
      
     override func viewWillDisappear(_ animated: Bool) {
@@ -88,6 +97,12 @@ class HomeViewController: UIViewController {
         productTableView.tableHeaderView?.isSkeletonable = true
         headerTable?.showAnimatedSkeleton()
     }
+    
+    private func setupLocation() {
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+    }
 }
 
 // MARK: View Protocol
@@ -109,7 +124,7 @@ extension HomeViewController: HomeViewProtocol {
             let info = InformationViewModel(title: "Algo salió mal",
                                             description: "Estamos trabajando para solucionarlo",
                                             image: "otherError")
-            self?.alert(model: info)
+            self?.alertView(model: info)
         }
     }
 }
@@ -153,5 +168,67 @@ extension HomeViewController: UISearchBarDelegate, UISearchResultsUpdating {
             vcResults.setUp()
             vcResults.recordTableView.reloadData()
         }
+    }
+}
+
+//MARK: Location
+extension HomeViewController: CLLocationManagerDelegate {
+     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if !locations.isEmpty, currentLocation == nil {
+            currentLocation = locations.first
+            locationManager.stopUpdatingLocation()
+            requestMeliForLocation()
+        }
+    }
+    
+    func requestMeliForLocation() {
+        guard let currentLocation = currentLocation else {
+            return
+        }
+        let long = currentLocation.coordinate.longitude
+        let lat = currentLocation.coordinate.latitude
+        
+        getAddressFromLatLon(latitude: lat, longitude: long)
+    }
+    
+    func getAddressFromLatLon(latitude: Double, longitude: Double) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let ceo: CLGeocoder = CLGeocoder()
+        center.latitude = latitude
+        center.longitude = longitude
+        
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+                                    {(placemarks, error) in
+            if (error != nil)
+            {
+                print("reverse geodcode fail: \(error!.localizedDescription)")
+            }
+            let pm = placemarks! as [CLPlacemark]
+            
+            if pm.count > 0 {
+                let pm = placemarks![0]
+                var addressString : String = ""
+                if pm.subLocality != nil {
+                    addressString = addressString + pm.subLocality! + ", "
+                }
+                if pm.thoroughfare != nil {
+                    addressString = addressString + pm.thoroughfare! + ", "
+                }
+                if pm.locality != nil {
+                    addressString = addressString + pm.locality! + ", "
+                }
+                if pm.country != nil {
+                    addressString = addressString + pm.country! + ", "
+                }
+                if pm.postalCode != nil {
+                    addressString = addressString + pm.postalCode! + " "
+                }
+                
+                self.alertModal(mensaje: "Su direccion de entrega es: \(addressString)", completion: nil)
+            }
+        })
     }
 }

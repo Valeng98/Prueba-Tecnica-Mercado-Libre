@@ -48,7 +48,7 @@ class RecordViewController: UIViewController,RecordViewProtocol  {
             let info = InformationViewModel(title: "Bienbenido !!",
                                             description: "Aqui encontraras tu historial de busquedas",
                                             image: "search")
-            alert(model: info)
+            alertView(model: info)
         } else {
             self.view.subviews.forEach { subView in
                 if let infoView = subView as? InformationView {
