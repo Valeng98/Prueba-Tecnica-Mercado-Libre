@@ -202,8 +202,7 @@ extension HomeViewController: CLLocationManagerDelegate {
         
         ceo.reverseGeocodeLocation(loc, completionHandler:
                                     {(placemarks, error) in
-            if (error != nil)
-            {
+            if (error != nil) {
                 print("reverse geodcode fail: \(error!.localizedDescription)")
             }
             let pm = placemarks! as [CLPlacemark]
@@ -211,20 +210,20 @@ extension HomeViewController: CLLocationManagerDelegate {
             if pm.count > 0 {
                 let pm = placemarks![0]
                 var addressString : String = ""
-                if pm.subLocality != nil {
-                    addressString = addressString + pm.subLocality! + ", "
+                if let subLocality = pm.subLocality {
+                    addressString = addressString + subLocality + ", "
                 }
-                if pm.thoroughfare != nil {
-                    addressString = addressString + pm.thoroughfare! + ", "
+                if let thoroughfare = pm.thoroughfare{
+                    addressString = addressString + thoroughfare + ", "
                 }
-                if pm.locality != nil {
-                    addressString = addressString + pm.locality! + ", "
+                if let locality = pm.locality {
+                    addressString = addressString + locality + ", "
                 }
-                if pm.country != nil {
-                    addressString = addressString + pm.country! + ", "
+                if let country = pm.country {
+                    addressString = addressString + country + ", "
                 }
-                if pm.postalCode != nil {
-                    addressString = addressString + pm.postalCode! + " "
+                if let postalCode = pm.postalCode {
+                    addressString = addressString + postalCode + " "
                 }
                 
                 self.alertModal(mensaje: "Su direccion de entrega es: \(addressString)", completion: nil)
