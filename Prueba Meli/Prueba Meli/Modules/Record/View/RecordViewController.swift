@@ -45,7 +45,7 @@ class RecordViewController: UIViewController,RecordViewProtocol  {
     func valiteError() {
         viewModel?.getlistRecord()
         if viewModel?.listRecordCount() ?? .zero == .zero {
-            let info = InformationViewModel(title: "Bienbenido !!",
+            let info = InformationViewModel(title: "Bienvenido !!",
                                             description: "Aqui encontraras tu historial de busquedas",
                                             image: "search")
             alertView(model: info)
