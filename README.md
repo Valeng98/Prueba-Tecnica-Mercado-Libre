@@ -27,7 +27,7 @@
 - [x] [SkeletonView](https://github.com/Juanpe/SkeletonView) - Has been conceived to address this need, an elegant way to show users that something is happening and also prepare them for which contents are waiting.
 
 ## Communication layers VIPER
-![alt text](https://github.com/Valeng98/Prueba-Tecnica-Mercado-Libre/blob/main/Diagrama-MVVM.png?raw=true)
+![alt text](https://github.com/Valeng98/Prueba-Tecnica-Mercado-Libre/blob/main/Diagram-MVVM-R.png?raw=true)
 
 - [x] MVVM Layered communication using protocols
 
